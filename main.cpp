@@ -51,7 +51,12 @@ int main() {
     printarray(sortarray1);
     cout << endl << endl;
     
+    vector<int> sortarray2(inputarray.begin(),inputarray.end());
+    SelSortB(sortarray2)
 
+    cout << "This is the Sorted Array via SselSortB (Find min, then swap)"
+    printarray(sortarray2);
+    cout << endl << endl;
 
 
 
