@@ -1,8 +1,9 @@
 #include <iostream>
 using namespace std;
 #include <vector>
+#include "Sorting.h"
 
-void swap(int &val1, int &val2) {
+void swap(int& val1, int& val2) {
     int holdval;
     holdval = val1;
     val1 = val2;
@@ -15,8 +16,9 @@ void SelSortA(vector<int>& Varray) {
     int i = 0;
     int n = Varray.size();
     int j = 0;
-    int min = infinity;
-    mindex = 0;
+    int min;
+    int mindex = 0;
+
     while (i < n) {
         min = infinity;
         j = i;
@@ -28,8 +30,7 @@ void SelSortA(vector<int>& Varray) {
 
             j++;
         }
-
-        swap(Varray[i], Varray[mindex])
+        swap(Varray[i], Varray[mindex]);
         i++;
     }
     return;
