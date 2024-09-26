@@ -151,7 +151,7 @@ int QS_Particion (vector<int>& Varray, int left, int right) {
 
     //Select a pivot. Midpoint and Right-/Left-Most are ways to do so, but Randomly is 
     //  preferable
-    int pivot = rand() % (right - left) + left;
+    int pivot = Varray[right];
     int i = left;
     int j = left;
 
@@ -173,9 +173,12 @@ void QS_Pivot (vector<int>& Varray, int left, int right) {
     /*The recursive pivot function*/
     if (left < right) {
         int pivot = QS_Particion(Varray, left, right);
-
-        QS_Pivot(Varray, left, pivot - 1);
-        QS_Pivot(Varray, pivot + 1, right);
+        if (pivot > left) {
+            QS_Pivot(Varray, left, pivot - 1);
+        }
+        if (pivot < right) {
+            QS_Pivot(Varray, pivot + 1, right);
+        }
     }
     return;
 }

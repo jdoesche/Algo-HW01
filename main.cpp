@@ -8,19 +8,22 @@ const int MAX = 128;
 
 void printarray(vector<int>& vect) {
     //Function to print the vector, in a Nx10 grid
+
+    int lineamt = 16; //Change this value to display more or less per line
+
     int i = 0;
     int j = 0;
     int universal = 0;
     while (true) {
         j = 0;
-        while (j < 10) {
-            if (vect[i * 10 + j] < 100) {
-                if (vect[i * 10 + j] < 10)
+        while (j < lineamt) {
+            if (vect[i * lineamt + j] < 100) {
+                if (vect[i * lineamt + j] < 10)
                     cout << " ";
                 cout << " ";
             }
-            cout << vect[i * 10 + j];
-            
+            cout << vect[i * lineamt + j];
+
             j++;
             universal++;
             if (universal < MAX) {
