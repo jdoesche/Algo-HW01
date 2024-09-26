@@ -136,9 +136,46 @@ void MergeSort(vector<int>& Varray) {
     */
 }
 
+int QS_Particion (vector<int>& Varray, int left, int right) {
+    /*This function particions the Array such that all left are correct*/
+
+    //Select a pivot. Midpoint and Right-/Left-Most are ways to do so, but Randomly is 
+    //  preferable
+    int pivot = rand() % (right - left) + left
+    int i = left;
+    int j = left;
+
+    while (j < right) {
+        if (Varray[j] <= pivot) {
+            swap(Varray[i], Varray[j])
+            i++;
+        }
+        j++;
+    }
+
+    swap(Varray[i], Varray[right]);
+
+
+    return i;
+}
+
+void QS_Pivot (vector<int>& Varray, int left, int right) {
+    /*The recursive pivot function*/
+    if (left < right) {
+        int pivot = QS_Particion(Varray, left, right);
+
+        QS_Pivot(Varray, left, pivot - 1);
+        QS_Pivot(Varray, pivot + 1, right);
+    }
+    return;
+}
+
 void QuickSort(vector<int>& Varray) {
     /*This function uses a pivot, and rorganizes */
+    int right = Varray.size() - 1
 
-
+    QS_Pivot(Varray, 0, right);
     return;
+    /*I had some nice help fron another website, as follows:
+    https://www.programiz.com/dsa/quick-sort */
 }
