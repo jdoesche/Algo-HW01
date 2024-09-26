@@ -44,6 +44,7 @@ int main() {
     printarray(inputarray);
     cout << endl << endl;
 
+    //SelSortA
     vector<int> sortarray1(inputarray.begin(),inputarray.end());
     SelSortA(sortarray1);
 
@@ -51,14 +52,21 @@ int main() {
     printarray(sortarray1);
     cout << endl << endl;
     
+    //SelSortB
     vector<int> sortarray2(inputarray.begin(),inputarray.end());
     SelSortB(sortarray2)
 
-    cout << "This is the Sorted Array via SselSortB (Find min, then swap)"
+    cout << "This is the Sorted Array via SelSortB (Find min, then swap):" << endl;
     printarray(sortarray2);
     cout << endl << endl;
 
+    //MergeSort
+    vector<int> sortarray3(inputarray.begin(),inputarray.end());
+    MergeSort(sortarray3)
 
+    cout << "This is the Sorted Array via MergeSort:" << endl;
+    printarray(sortarray3);
+    cout << endl << endl;
 
     return 0;
 }

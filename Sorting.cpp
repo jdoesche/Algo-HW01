@@ -49,7 +49,6 @@ void SelSortB(vector<int>& Varray) {
                 min = Varray[j];
                 mindex = j;
             }
-
             j++;
         }
         swap(Varray[i], Varray[mindex]);
@@ -58,11 +57,83 @@ void SelSortB(vector<int>& Varray) {
     return;
 }
 
-void MergeSort(vector<int>& Varray) {
-    /*This function divides the array into many smaller arrays, then re-merges them*/
+void MS_Conquer(vector<int>& Varray, int left, int divisor, int right) {
+    /*This function is the merger function of Merge Sort */
 
+    //Create two temporary sub-arrays
+    int i = 0;
+    int len1 = divisor;
+    int len2 = right - divisor;
+
+    int larr[len1];
+    int rarr[len2];
+
+    while (i < len1) {
+        larr[i] = Varray[left + i]
+        i++;
+    }
+    i = 0;
+    while (i < len2) {
+        rarr[i] = Varray[divisor + 1 + i]
+        i++;
+    }
+
+    //Re-merge the Sub-arrays back int Varray
+    i = 0;
+    int j = 0;
+    int k = left;
+
+    while(i < len1 && j < len2) {
+        if (larr[i] <= rarr[j]) {
+            Varray[k] = larr[i];
+            i++;
+        }
+        else {
+            Varray[k] = rarr[j]
+            j++;
+        }
+        k++;
+    }
+
+    //Add the stragglers
+    while (i < len1) {
+        Varray[k] = larr[i];
+        i++;
+        k++;
+    }
+    while (j < len2) {
+        Varray[k] = rarr[j]
+        j++;
+        k++;
+    }
 
     return;
+}
+
+void MS_Divide(vector<int>& Varray, int left, int right) {
+    /*This function is a recursive function that sections the array off*/
+    if (left < right) {
+        int divisor = left + (right - 1) / 2;
+
+        MS_Divide(Varray, left, divisor);
+        MS_Divide(Varray, divisor + 1, right);
+
+        MS_Conquer(Varray, left, divisor, right);
+    }
+    return;
+}
+
+void MergeSort(vector<int>& Varray) {
+    /*This is the intializer function for the Sorter*/
+    int left = 0;
+    int right = Varray.size() - 1;
+
+    MS_Divide(Varray, left, right);
+    return;
+    /*I had some serious help from the following website for both referencing as well as
+    understanding MergeSort:
+    https://www.digitalocean.com/community/tutorials/merge-sort-algorithm-java-c-python
+    */
 }
 
 void QuickSort(vector<int>& Varray) {
