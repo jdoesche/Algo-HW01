@@ -61,9 +61,16 @@ void SelSortB(vector<int>& Varray) {
 void MS_Conquer(vector<int>& Varray, int left, int divisor, int right) {
     /*This function is the merger function of Merge Sort */
 
+    //easy-out
+    if (right - left <= 2) {
+        if (Varray[left] > Varray[right])
+            swap(Varray[left], Varray[right]);
+        return;
+    }
+
     //Create two temporary sub-arrays
     int i = 0;
-    int len1 = divisor;
+    int len1 = divisor - left + 1;
     int len2 = right - divisor;
 
     int larr[len1];
@@ -75,7 +82,7 @@ void MS_Conquer(vector<int>& Varray, int left, int divisor, int right) {
     }
     i = 0;
     while (i < len2) {
-        rarr[i] = Varray[divisor + 1 + i];
+        rarr[i] = Varray[divisor + i + 1];
         i++;
     }
 
@@ -83,6 +90,7 @@ void MS_Conquer(vector<int>& Varray, int left, int divisor, int right) {
     i = 0;
     int j = 0;
     int k = left;
+
 
     while(i < len1 && j < len2) {
         if (larr[i] <= rarr[j]) {
@@ -94,6 +102,7 @@ void MS_Conquer(vector<int>& Varray, int left, int divisor, int right) {
             j++;
         }
         k++;
+
     }
 
     //Add the stragglers
@@ -122,7 +131,6 @@ void MS_Divide(vector<int>& Varray, int left, int right) {
     MS_Divide(Varray, divisor + 1, right);
 
     MS_Conquer(Varray, left, divisor, right);
-
     return;
 }
 

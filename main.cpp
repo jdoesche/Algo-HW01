@@ -6,19 +6,33 @@ using namespace std;
 
 const int MAX = 128;
 
-void printarray(vector<int> &vectors) {
+void printarray(vector<int>& vect) {
     //Function to print the vector, in a Nx10 grid
     int i = 0;
-    int size = vectors.size();
-
-    while (i < size) {
-        cout << vectors[i];
-
+    int j = 0;
+    int universal = 0;
+    while (true) {
+        j = 0;
+        while (j < 10) {
+            if (vect[i * 10 + j] < 100) {
+                if (vect[i * 10 + j] < 10)
+                    cout << " ";
+                cout << " ";
+            }
+            cout << vect[i * 10 + j];
+            
+            j++;
+            universal++;
+            if (universal < MAX) {
+                cout << ", ";
+            }
+            else {
+                return;
+            }
+        }
+        cout << endl;
         i++;
-        if (i < size)
-            cout << ", ";
     }
-    return;
 }
 
 int main() {

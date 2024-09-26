@@ -9,3 +9,5 @@ Author: Jesse D
 Date Submitted:
 
 For: CSCI430
+
+Usage: The Program generates a randomly-generated array of size MAX. MAX is found in the main.cpp file. By default, this is set to 128. However, the files should, theoretically, be capable of supporting arrays of countably infinite size.
