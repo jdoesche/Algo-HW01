@@ -16,9 +16,10 @@ void SelSortA(vector<int>& Varray) {
     int i = 0;
     int n = Varray.size();
     int j = 0;
+    int min;
 
     while (i < n) {
-        min = infinity;
+        min = aleph;
         j = i;
         while (j < n) {
             if (Varray[j] < Varray[i]) {
@@ -42,7 +43,7 @@ void SelSortB(vector<int>& Varray) {
     int mindex = 0;
 
     while (i < n) {
-        min = infinity;
+        min = aleph;
         j = i;
         while (j < n) {
             if (Varray[j] < min) {
@@ -69,12 +70,12 @@ void MS_Conquer(vector<int>& Varray, int left, int divisor, int right) {
     int rarr[len2];
 
     while (i < len1) {
-        larr[i] = Varray[left + i]
+        larr[i] = Varray[left + i];
         i++;
     }
     i = 0;
     while (i < len2) {
-        rarr[i] = Varray[divisor + 1 + i]
+        rarr[i] = Varray[divisor + 1 + i];
         i++;
     }
 
@@ -89,7 +90,7 @@ void MS_Conquer(vector<int>& Varray, int left, int divisor, int right) {
             i++;
         }
         else {
-            Varray[k] = rarr[j]
+            Varray[k] = rarr[j];
             j++;
         }
         k++;
@@ -102,7 +103,7 @@ void MS_Conquer(vector<int>& Varray, int left, int divisor, int right) {
         k++;
     }
     while (j < len2) {
-        Varray[k] = rarr[j]
+        Varray[k] = rarr[j];
         j++;
         k++;
     }
@@ -112,14 +113,16 @@ void MS_Conquer(vector<int>& Varray, int left, int divisor, int right) {
 
 void MS_Divide(vector<int>& Varray, int left, int right) {
     /*This function is a recursive function that sections the array off*/
-    if (left < right) {
-        int divisor = left + (right - 1) / 2;
+    if (left >= right)
+        return;
 
-        MS_Divide(Varray, left, divisor);
-        MS_Divide(Varray, divisor + 1, right);
+    int divisor = left + ((right - left) / 2);
 
-        MS_Conquer(Varray, left, divisor, right);
-    }
+    MS_Divide(Varray, left, divisor);
+    MS_Divide(Varray, divisor + 1, right);
+
+    MS_Conquer(Varray, left, divisor, right);
+
     return;
 }
 
@@ -132,8 +135,7 @@ void MergeSort(vector<int>& Varray) {
     return;
     /*I had some serious help from the following website for both referencing as well as
     understanding MergeSort:
-    https://www.digitalocean.com/community/tutorials/merge-sort-algorithm-java-c-python
-    */
+    https://www.digitalocean.com/community/tutorials/merge-sort-algorithm-java-c-python */
 }
 
 int QS_Particion (vector<int>& Varray, int left, int right) {
@@ -141,13 +143,13 @@ int QS_Particion (vector<int>& Varray, int left, int right) {
 
     //Select a pivot. Midpoint and Right-/Left-Most are ways to do so, but Randomly is 
     //  preferable
-    int pivot = rand() % (right - left) + left
+    int pivot = rand() % (right - left) + left;
     int i = left;
     int j = left;
 
     while (j < right) {
         if (Varray[j] <= pivot) {
-            swap(Varray[i], Varray[j])
+            swap(Varray[i], Varray[j]);
             i++;
         }
         j++;
@@ -172,10 +174,10 @@ void QS_Pivot (vector<int>& Varray, int left, int right) {
 
 void QuickSort(vector<int>& Varray) {
     /*This function uses a pivot, and rorganizes */
-    int right = Varray.size() - 1
+    int right = Varray.size() - 1;
 
     QS_Pivot(Varray, 0, right);
     return;
-    /*I had some nice help fron another website, as follows:
+    /*I had some nice help from another website, as follows:
     https://www.programiz.com/dsa/quick-sort */
 }

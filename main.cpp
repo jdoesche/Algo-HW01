@@ -6,36 +6,28 @@ using namespace std;
 
 const int MAX = 128;
 
-void printarray(vector<int> vect) {
+void printarray(vector<int> &vectors) {
     //Function to print the vector, in a Nx10 grid
     int i = 0;
-    int j = 0;
-    int universal = 0;
-    while (true) {
-        j = 0;
-        while (j < 10) {
-            cout << vect[i * 10 + j];
-            j++;
-            universal++;
-            if (universal < MAX) {
-                cout << ", ";
-            }
-            else {
-                return;
-            }
-        }
-        cout << endl;
+    int size = vectors.size();
+
+    while (i < size) {
+        cout << vectors[i];
+
         i++;
+        if (i < size)
+            cout << ", ";
     }
+    return;
 }
 
 int main() {
     //Produce a vector
     vector<int> inputarray;
     int i = 0;
-    int maxval = 998;
+    int maxval = 1000;
     while (i < MAX) {
-        int a = rand() % maxval + 1;
+        int a = rand() % maxval;
         inputarray.push_back(a);
         i++;
     }
@@ -54,7 +46,7 @@ int main() {
     
     //SelSortB
     vector<int> sortarray2(inputarray.begin(),inputarray.end());
-    SelSortB(sortarray2)
+    SelSortB(sortarray2);
 
     cout << "This is the Sorted Array via SelSortB (Find min, then swap):" << endl;
     printarray(sortarray2);
@@ -62,10 +54,18 @@ int main() {
 
     //MergeSort
     vector<int> sortarray3(inputarray.begin(),inputarray.end());
-    MergeSort(sortarray3)
+    MergeSort(sortarray3);
 
     cout << "This is the Sorted Array via MergeSort:" << endl;
     printarray(sortarray3);
+    cout << endl << endl;
+
+    //Quicksort
+    vector<int> sortarray4(inputarray.begin(),inputarray.end());
+    QuickSort(sortarray4);
+
+    cout << "This is the Sorted Array via Quicksort:" << endl;
+    printarray(sortarray4);
     cout << endl << endl;
 
     return 0;

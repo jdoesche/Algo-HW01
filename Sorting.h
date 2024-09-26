@@ -15,6 +15,6 @@ void SelSortB(vector<int>& Varray);
 void MergeSort(vector<int>& Varray);
 void QuickSort(vector<int>& Varray);
 
-const int infinity = 2147483647;
+const int aleph = 2147483647;
 
 #endif //SORTING_H
