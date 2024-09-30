@@ -2,6 +2,7 @@
 using namespace std;
 #include <vector>
 #include "Sorting.h"
+#include <string>
 
 void swap(int& val1, int& val2) {
     int holdval;
@@ -191,4 +192,66 @@ void QuickSort(vector<int>& Varray) {
     return;
     /*I had some nice help from another website, as follows:
     https://www.programiz.com/dsa/quick-sort */
+}
+
+int power(int base, int exponent) {
+    if (exponent < 0) // Not designed for inverse functionality ):
+        return 0;
+
+    if (exponent == 0)
+        return 1;
+
+    return num * power(base, exponent - 1);
+}
+
+void swapstring(string a, string b) {
+    string t = a;
+    a = b;
+    b = t;
+    return;
+}
+
+string RS_ToBinary(int num) {
+    /*Converts a given int to a Binary String*/
+    int i = aleph_bit;
+    string base;
+    while (i > -1) {
+        int compnum = power(2, i);
+        compnum = num % compnum;
+
+        if (compnum == 0)
+            base += "0";
+        else
+            base += "1";
+
+        i--;
+    }
+
+    return base;
+}
+
+int RS_FromBinary(string num) {
+    /*Converts a given Binary String to an int*/
+    int i = aleph_bit;
+    int j = 0;
+    int base = 0;
+    while (i > -1) {
+        if (num[j] == "0")
+            base += power(2, i)
+    
+        j++;
+        i--;
+    }
+
+    return base;
+}
+
+void RadixSort(vector<int>& Varray) {
+    /*This function sorts it by ordering least significant to most significant*/
+    vector<string> BinVarray;
+    int i = 0;
+    while i < len(Varray) {
+        BinVarray[i] = RS_ToBinary(Varray[i])
+        i++;
+    }
 }

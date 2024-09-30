@@ -9,6 +9,8 @@ using namespace std;
 void swap(int &val1, int &val2);
 void MS_Divide(vector<int>& Varray, int left, int right);
 void MS_Conquer(vector<int>& Varray, int left, int divisor, int right);
+void QS_Pivot (vector<int>& Varray, int left, int right);
+int  QS_Particion (vector<int>& Varray, int left, int right);
 
 void SelSortA(vector<int>& Varray);
 void SelSortB(vector<int>& Varray);
