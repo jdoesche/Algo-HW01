@@ -2,7 +2,6 @@
 using namespace std;
 #include <vector>
 #include "Sorting.h"
-#include <string>
 
 void swap(int& val1, int& val2) {
     int holdval;
@@ -17,10 +16,8 @@ void SelSortA(vector<int>& Varray) {
     int i = 0;
     int n = Varray.size();
     int j = 0;
-    int min;
 
     while (i < n) {
-        min = aleph;
         j = i;
         while (j < n) {
             if (Varray[j] < Varray[i]) {
@@ -194,6 +191,17 @@ void QuickSort(vector<int>& Varray) {
     https://www.programiz.com/dsa/quick-sort */
 }
 
+//Part 2
+
+
+
+
+
+
+
+
+
+
 int power(int base, int exponent) {
     if (exponent < 0) // Not designed for inverse functionality ):
         return 0;
@@ -201,57 +209,112 @@ int power(int base, int exponent) {
     if (exponent == 0)
         return 1;
 
-    return num * power(base, exponent - 1);
+    return base * power(base, exponent - 1);
 }
 
-void swapstring(string a, string b) {
+void InsSort(vector<int>& Varray) {
+    return;
+}
+
+void BubbleSortA(vector<int>& Varray) {
+    return;
+}
+
+
+void BubbleSortB(vector<int>& Varray) {
+    return;
+}
+
+
+void BubbleSortC(vector<int>& Varray) {
+    return;
+}
+
+
+void CountingSort(vector<int>& Varray) {
+    //Count the number of each value in the array, then reconstruct it from those values
+    int maxval = 10000;
+    vector<int> Counts(maxval, 0);
+
+    int i = 0;
+    int l = Varray.size();
+    while (i < l) {
+        Counts[Varray[i]]++;
+        i++;
+    }
+
+    i = 0;
+    int j = 0;
+    while (i < maxval) {
+        while(Counts[i] > 0) {
+            Varray[j] = i;
+            Counts[i]--;
+            j++;
+        }
+        i++;
+    }
+
+    return;
+}
+
+
+
+void swapstring(string& a, string& b) {
     string t = a;
     a = b;
     b = t;
     return;
 }
 
-string RS_ToBinary(int num) {
-    /*Converts a given int to a Binary String*/
-    int i = aleph_bit;
-    string base;
-    while (i > -1) {
-        int compnum = power(2, i);
-        compnum = num % compnum;
+void MoveItMoveIt(vector<int>& Varray, int num_to, int num_from) {
+    /*Move n to position x, shifting all variables between right*/
+    if (num_to >= num_from)
+        return;
 
-        if (compnum == 0)
-            base += "0";
-        else
-            base += "1";
+    //cout << "Swapping " << Varray[num_from] << " (" << num_from << ") to " << num_to << endl;
 
+    int i = num_from - 1;
+    while (i >= num_to) {
+        swap(Varray[i], Varray[i + 1]);
         i--;
     }
-
-    return base;
+    return;
 }
 
-int RS_FromBinary(string num) {
-    /*Converts a given Binary String to an int*/
-    int i = aleph_bit;
-    int j = 0;
-    int base = 0;
-    while (i > -1) {
-        if (num[j] == "0")
-            base += power(2, i)
-    
-        j++;
-        i--;
-    }
+int ReturnNthValue(int input, int digit) {
 
-    return base;
+    int holdval = (input / power(10, digit)) % 10;
+    //cout << "The " << digit << "th Digit of " << input << " is " << holdval << endl;
+    return holdval;
+}
+
+void RS_Helper(int innum, vector<int>& Varray, int i, int& k) {
+    int j = k;
+    int length = Varray.size();
+    while (j < length) {
+        if (ReturnNthValue(Varray[j], i) == innum) {
+            MoveItMoveIt(Varray, k, j);
+            k++;
+        }
+        j++;
+    }
+    return;
 }
 
 void RadixSort(vector<int>& Varray) {
     /*This function sorts it by ordering least significant to most significant*/
-    vector<string> BinVarray;
     int i = 0;
-    while i < len(Varray) {
-        BinVarray[i] = RS_ToBinary(Varray[i])
+    int k;
+    int l;
+    while (i < 5) {
+        l = 0;
+        k = 0;
+        while (l < 9) {
+            RS_Helper(l, Varray, i, k);
+            l++;
+        }
         i++;
     }
+
+    return;
 }

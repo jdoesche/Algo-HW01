@@ -81,8 +81,26 @@ int main() {
     vector<int> sortarray4(inputarray.begin(),inputarray.end());
     QuickSort(sortarray4);
 
-    cout << "This is the Sorted Array via Quicksort:" << endl;
+    cout << "This is the Sorted Array via QuickSort:" << endl;
     printarray(sortarray4);
+    cout << endl << endl;
+
+    //Part 2
+
+    //CountingSort
+    vector<int> sortarray9(inputarray.begin(),inputarray.end());
+    CountingSort(sortarray9);
+
+    cout << "This is the Sorted Array via CountingSort:" << endl;
+    printarray(sortarray9);
+    cout << endl << endl;
+
+    //RadixSort
+    vector<int> sortarray10(inputarray.begin(),inputarray.end());
+    RadixSort(sortarray10);
+
+    cout << "This is the Sorted Array via RadixSort:" << endl;
+    printarray(sortarray10);
     cout << endl << endl;
 
     return 0;
