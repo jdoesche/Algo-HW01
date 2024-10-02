@@ -107,9 +107,9 @@ int main() {
 int main(int argc, char **argv)
 {
     // get the number to run.
-    unsigned int size = 128;
+    unsigned int n = 128;
     if(argc == 2) {
-        size = stoi(argv[1]);
+        n = stoi(argv[1]);
     }
     SortTest t{n};
 
