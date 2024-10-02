@@ -87,6 +87,38 @@ int main() {
 
     //Part 2
 
+    //InsSort
+    vector<int> sortarray5(inputarray.begin(),inputarray.end());
+    InsSort(sortarray5);
+
+    cout << "This is the Sorted Array via InsSort:" << endl;
+    printarray(sortarray5);
+    cout << endl << endl;   
+
+    //BubbleSortA
+    vector<int> sortarray6(inputarray.begin(),inputarray.end());
+    BubbleSortA(sortarray6);
+
+    cout << "This is the Sorted Array via BubbleSortA (With no Swap Detection):" << endl;
+    printarray(sortarray6);
+    cout << endl << endl;
+
+    //BubbleSortB
+    vector<int> sortarray7(inputarray.begin(),inputarray.end());
+    BubbleSortB(sortarray7);
+
+    cout << "This is the Sorted Array via BubbleSortB (Start -> End w/ Swap Detection):" << endl;
+    printarray(sortarray7);
+    cout << endl << endl;
+
+    //BubbleSortC
+    vector<int> sortarray8(inputarray.begin(),inputarray.end());
+    BubbleSortC(sortarray8);
+
+    cout << "This is the Sorted Array via BubbleSortC (End -> Start w/ Swap Detection):" << endl;
+    printarray(sortarray8);
+    cout << endl << endl;
+
     //CountingSort
     vector<int> sortarray9(inputarray.begin(),inputarray.end());
     CountingSort(sortarray9);

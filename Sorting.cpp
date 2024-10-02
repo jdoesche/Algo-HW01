@@ -191,16 +191,21 @@ void QuickSort(vector<int>& Varray) {
     https://www.programiz.com/dsa/quick-sort */
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Part 2
-
-
-
-
-
-
-
-
-
 
 int power(int base, int exponent) {
     if (exponent < 0) // Not designed for inverse functionality ):
@@ -212,21 +217,119 @@ int power(int base, int exponent) {
     return base * power(base, exponent - 1);
 }
 
+void MoveItMoveIt(vector<int>& Varray, int num_to, int num_from) {
+    /*Move n to position x, shifting all variables between right*/
+    if (num_to >= num_from)
+        return;
+
+    //cout << "Swapping " << Varray[num_from] << " (" << num_from << ") to " << num_to << endl;
+
+    int i = num_from - 1;
+    while (i >= num_to) {
+        swap(Varray[i], Varray[i + 1]);
+        i--;
+    }
+    return;
+}
+
 void InsSort(vector<int>& Varray) {
+    //Individually sorting out each element into a sorted array
+    
+    int size = Varray.size();
+
+    //Initial Pass
+    if (size == 1)
+        return;
+    if (Varray[0] > Varray[1])
+        swap(Varray[0], Varray[1]);
+
+    //else
+    if (size == 2)
+        return;
+
+    int pivot = 1;
+    while (pivot < size) {
+        //find location
+        int i = 0;
+        while (Varray[i] < Varray[pivot] && i < pivot) {
+            i++;
+        }
+        MoveItMoveIt(Varray, i, pivot);
+        pivot++;
+    }
+
     return;
 }
 
 void BubbleSortA(vector<int>& Varray) {
+    //Largest element "Bubbles" to the top
+    int i = 0;
+    int l = Varray.size();
+
+    while (l > 1) {
+        i = 0;
+
+        while (i < l - 1) {
+            if (Varray[i] > Varray[i + 1]) {
+                swap(Varray[i],Varray[i + 1]);
+            }
+            i++;
+        }
+        l--;
+    }
     return;
 }
 
 
 void BubbleSortB(vector<int>& Varray) {
+    //Same as A, but will automatically return if it fails to swap
+    int i = 0;
+    int l = Varray.size();
+    bool hasswapped;
+
+    while (l > 1) {
+        i = 0;
+        hasswapped = false;
+
+        while (i < l - 1) {
+            if (Varray[i] > Varray[i + 1]) {
+                swap(Varray[i],Varray[i + 1]);
+                hasswapped = true;
+            }
+            i++;
+        }
+        if (hasswapped == false)
+            return;
+        
+        l--;
+    }
     return;
 }
 
 
 void BubbleSortC(vector<int>& Varray) {
+    //Same as B, but in the reverse order
+    int i = 0;
+    int j = 0;
+    int l = Varray.size();
+    bool hasswapped;
+
+    while (i < l) {
+        j = 0;
+        hasswapped = false;
+
+        while (j < l - 1) {
+            if (Varray[j] > Varray[j + 1]) {
+                swap(Varray[j],Varray[j + 1]);
+                hasswapped = true;
+            }
+            j++;
+        }
+        if (hasswapped == false)
+            return;
+        
+        i++;
+    }
     return;
 }
 
@@ -254,30 +357,6 @@ void CountingSort(vector<int>& Varray) {
         i++;
     }
 
-    return;
-}
-
-
-
-void swapstring(string& a, string& b) {
-    string t = a;
-    a = b;
-    b = t;
-    return;
-}
-
-void MoveItMoveIt(vector<int>& Varray, int num_to, int num_from) {
-    /*Move n to position x, shifting all variables between right*/
-    if (num_to >= num_from)
-        return;
-
-    //cout << "Swapping " << Varray[num_from] << " (" << num_from << ") to " << num_to << endl;
-
-    int i = num_from - 1;
-    while (i >= num_to) {
-        swap(Varray[i], Varray[i + 1]);
-        i--;
-    }
     return;
 }
 
