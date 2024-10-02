@@ -2,13 +2,9 @@
 using namespace std;
 #include <vector>
 #include "Sorting.h"
-#include <algorithm>
-#include <string>
-#include "sort_test.h"
-#include "builtin.h"
 
-/*
-//Testing Functions
+
+const int MAX = 128;
 
 void printarray(vector<int>& vect) {
     //Function to print the vector, in a Nx10 grid
@@ -47,7 +43,7 @@ int main() {
     vector<int> inputarray;
     int i = 0;
     int maxval = 1000;
-    while (i < MAXVect) {
+    while (i < MAX) {
         int a = rand() % maxval;
         inputarray.push_back(a);
         i++;
@@ -85,58 +81,59 @@ int main() {
     vector<int> sortarray4(inputarray.begin(),inputarray.end());
     QuickSort(sortarray4);
 
-    cout << "This is the Sorted Array via Quicksort:" << endl;
+    cout << "This is the Sorted Array via QuickSort:" << endl;
     printarray(sortarray4);
     cout << endl << endl;
 
-    return 0;
-}
-    */
+    //Part 2
 
+    //InsSort
+    vector<int> sortarray5(inputarray.begin(),inputarray.end());
+    InsSort(sortarray5);
 
-/**
- * @file main.cpp
- * @author Bob Lowe < rlowe8@utm.edu >
- * @brief Test the sort algorithms using the number of elements specified on the command line.
- * @version 0.1
- * 
- * @copyright Copyright (c) 2024
- * 
- */
+    cout << "This is the Sorted Array via InsSort:" << endl;
+    printarray(sortarray5);
+    cout << endl << endl;   
 
-int main(int argc, char **argv)
-{
-    // get the number to run.
-    unsigned int size = 128;
-    if(argc == 2) {
-        size = stoi(argv[1]);
-    }
-    SortTest t{n};
+    //BubbleSortA
+    vector<int> sortarray6(inputarray.begin(),inputarray.end());
+    BubbleSortA(sortarray6);
 
-    // Run the tests
-    cout << "Array Size: " << n << endl;
-    t.run("Built-In STL Sort", builtinSort);
+    cout << "This is the Sorted Array via BubbleSortA (With no Swap Detection):" << endl;
+    printarray(sortarray6);
+    cout << endl << endl;
 
-    t.run("Selection Sort (A)", SelSortA);
+    //BubbleSortB
+    vector<int> sortarray7(inputarray.begin(),inputarray.end());
+    BubbleSortB(sortarray7);
 
-    t.run("Selection Sort (B)", SelSortB);
+    cout << "This is the Sorted Array via BubbleSortB (Start -> End w/ Swap Detection):" << endl;
+    printarray(sortarray7);
+    cout << endl << endl;
 
-    t.run("Merge Sort", MergeSort);
+    //BubbleSortC
+    vector<int> sortarray8(inputarray.begin(),inputarray.end());
+    BubbleSortC(sortarray8);
 
-    t.run("Quick Sort", QuickSort);
+    cout << "This is the Sorted Array via BubbleSortC (End -> Start w/ Swap Detection):" << endl;
+    printarray(sortarray8);
+    cout << endl << endl;
 
-    t.run("Insertion Sort", InsSort);
+    //CountingSort
+    vector<int> sortarray9(inputarray.begin(),inputarray.end());
+    CountingSort(sortarray9);
 
-    t.run("Bubble Sort (A)", BubbleSortA);
+    cout << "This is the Sorted Array via CountingSort:" << endl;
+    printarray(sortarray9);
+    cout << endl << endl;
 
-    t.run("Bubble Sort (B)", BubbleSortB);
+    //RadixSort
+    vector<int> sortarray10(inputarray.begin(),inputarray.end());
+    RadixSort(sortarray10);
 
-    t.run("Bubble Sort (C)", BubbleSortC);
-
-    t.run("Counting Sort", CountingSort);
-
-    t.run("Radix Sort", RadixSort);
-
+    cout << "This is the Sorted Array via RadixSort:" << endl;
+    printarray(sortarray10);
+    cout << endl << endl;
 
     return 0;
 }
